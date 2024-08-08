@@ -60,18 +60,54 @@
     }
 
     function KmToMile() {
+      const [km, setKm] = React.useState();
+      const [mile, setMile] = React.useState();
+
+      const toMile = (event) => {
+        const distance = event.target.value;
+        setMile((distance*0.621371).toFixed(5));
+        setKm(distance);
+      }
+      const toKm = (event) => {
+        const distance = event.target.value;
+        setKm((distance*1.60934).toFixed(5));
+        setMile(distance);
+      }
+
       return (
-        <h1>test</h1>
-      )
+        <div>
+          <div>
+            <label for="kms">Km : </label>
+            <input 
+              type="number" 
+              id="kms"
+              placeholder="Km"
+              value={km}
+              onChange={toMile}
+            />
+          </div>
+          <div>
+            <label for="miles">Mile : </label>
+            <input 
+              type="number" 
+              id="miles"
+              placeholder="Mile"
+              value={mile}
+              onChange={toKm}
+            />
+          </div>
+        </div>
+      );
     }
 
     function App() {
       return (
         <div>
+          <h1>Converter</h1>
           <MinutesToHours />
           <KmToMile />
         </div>
-      )
+      );
     }
 
     function render() {
