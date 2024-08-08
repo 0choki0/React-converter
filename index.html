@@ -16,8 +16,53 @@
 
   <!-- code -->
   <script type="text/babel">
-    console.log("test")
+    const root = document.querySelector("#root");
 
+    function MinutesToHours() {
+      const [hour, setHour] = React.useState();
+      const [minute, setMinute] = React.useState();
+
+      const toHours = (event) => {
+        const time = event.target.value;
+        setHour((time / 60).toFixed(2));
+        setMinute(time);
+      }
+      const toMinutes = (event) => {
+        const time = event.target.value;
+        setMinute((time * 60));
+        setHour(time);
+      }
+      return (
+        <div> 
+          <div>
+            <label for="minutes">Minutes : </label>
+            <input 
+              type="number"
+              id="minutes"
+              placeholder="Minutes"
+              value={minute}
+              onChange={toHours}
+            />
+          </div>
+
+          <div>
+            <label for="hours">Hours : </label>
+            <input 
+              type="number"
+              id="hours"
+              placeholder="Minutes"
+              value={hour}
+              onChange={toMinutes}
+            />
+          </div>
+        </div>
+      );
+    }
+
+    function render() {
+      ReactDOM.render(<MinutesToHours />, root);
+    };
+    render();
 
   </script>
 </body>
