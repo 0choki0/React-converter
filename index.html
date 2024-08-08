@@ -59,8 +59,23 @@
       );
     }
 
+    function KmToMile() {
+      return (
+        <h1>test</h1>
+      )
+    }
+
+    function App() {
+      return (
+        <div>
+          <MinutesToHours />
+          <KmToMile />
+        </div>
+      )
+    }
+
     function render() {
-      ReactDOM.render(<MinutesToHours />, root);
+      ReactDOM.render(<App />, root);
     };
     render();
 
