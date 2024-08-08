@@ -18,7 +18,7 @@
   <script type="text/babel">
     const root = document.querySelector("#root");
 
-    function MinutesToHours() {
+    function MinuteToHour() {
       const [hour, setHour] = React.useState();
       const [minute, setMinute] = React.useState();
 
@@ -35,7 +35,7 @@
       return (
         <div> 
           <div>
-            <label for="minutes">Minutes : </label>
+            <label for="minutes">Minute : </label>
             <input 
               type="number"
               id="minutes"
@@ -46,7 +46,7 @@
           </div>
 
           <div>
-            <label for="hours">Hours : </label>
+            <label for="hours">Hour : </label>
             <input 
               type="number"
               id="hours"
@@ -101,12 +101,21 @@
     }
 
     function App() {
+      const [index, setIndex] = React.useState("0");
+      const onSelect = (event) => {
+          setIndex(event.target.value);
+      };
       return (
         <div>
-          <h1>Converter</h1>
-          <MinutesToHours />
-          <KmToMile />
-        </div>
+          <h1 className="hi">Converter</h1>
+          <select onChange={onSelect} value={index}>
+              <option value="0">Minute & Hour</option>
+              <option value="1">Km & Mile</option>
+          </select>
+          <hr />
+          {index === "0" ? <MinuteToHour />: null}
+          {index === "1" ? <KmToMile />: null}
+      </div>
       );
     }
 
